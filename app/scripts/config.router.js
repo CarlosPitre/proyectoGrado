@@ -20,7 +20,7 @@ angular.module('app')
     [          '$stateProvider', '$urlRouterProvider', 'MODULE_CONFIG',
       function ( $stateProvider,   $urlRouterProvider,  MODULE_CONFIG ) {
         $urlRouterProvider
-          .otherwise('/app/dashboard');
+          .otherwise('/app/clientes');
         $stateProvider
           .state('app', {
             abstract: true,
@@ -37,11 +37,11 @@ angular.module('app')
               }
             }
           })
-            .state('app.dashboard', {
-              url: '/dashboard',
-              templateUrl: 'views/pages/dashboard.html',
-              data : { title: 'Dashboard', folded: true },
-              resolve: load(['scripts/controllers/chart.js','scripts/controllers/vectormap.js'])
+            .state('app.clientes', {
+              url: '/clientes',
+              templateUrl: 'views/admin/clientes.html',
+              data : { title: 'Clientes', folded: true },
+              resolve: load(['xeditable','myScripts/controllers/clientesController.js','myScripts/services/clienteService.js'])
             })
             .state('app.analysis', {
               url: '/analysis',

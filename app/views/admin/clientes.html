@@ -1,0 +1,78 @@
+<div ng-controller="clientesController">
+	<div class="row">
+		<div class="col-md-6">
+			<br>
+			<button class="btn btn-primary m-b-lg" ng-click="addCliente()">Añadir Nuevo Cliente</button>
+		</div>
+		<div class="col-md-6">
+			<div class="form-group">
+				<label>Filtro</label>
+				<input type="text" class="form-control" ng-model="filtro" >
+			</div>
+		</div>
+	</div>
+	
+	<table class="table table-bordered table-hover table-condensed bg-white">
+	<tr style="font-weight: bold">
+		<td style="width:35%">Tipo Doc.</td>
+		<td style="width:35%">Numero</td>
+		<td style="width:20%">Nombres</td>
+		<td style="width:20%">Apellidos</td>
+		<td style="width:20%">Dirección</td>
+		<td style="width:20%">Teléfono</td>
+		<td style="width:20%">Email</td>
+		<td style="width:25%">Editar</td>
+	</tr>
+	<tr ng-repeat="cliente in Clientes | filter: filtro">
+		<td class="v-middle">
+			<span editable-text="cliente.tipoDoc" e-name="tipoDoc" e-form="rowform" onbeforesave="checkName($data, cliente.id)" e-required>
+			{{ cliente.tipoDoc }}
+			</span>
+		</td>
+		<td class="v-middle">
+			<span editable-text="cliente.cedula" e-name="cedula" e-form="rowform" onbeforesave="checkName($data, cliente.id)" e-required>
+			{{ cliente.cedula }}
+			</span>
+		</td>
+		<td class="v-middle">
+			<span editable-text="cliente.nombres" e-name="nombres" e-form="rowform" onbeforesave="checkName($data, cliente.id)" e-required>
+			{{ cliente.nombres}}
+			</span>
+		</td>
+		<td class="v-middle">
+			<span editable-text="cliente.apellidos" e-name="apellidos" e-form="rowform" onbeforesave="checkName($data, cliente.id)" e-required>
+			{{ cliente.apellidos }}
+			</span>
+		</td>
+		<td class="v-middle">
+			<span editable-text="cliente.direccion" e-name="direccion" e-form="rowform" onbeforesave="checkName($data, cliente.id)" e-required>
+			{{ cliente.direccion }}
+			</span>
+		</td>
+		<td class="v-middle">
+			<span editable-text="cliente.telefono" e-name="telefono" e-form="rowform" onbeforesave="checkName($data, cliente.id)" e-required>
+			{{ cliente.telefono }}
+			</span>
+		</td>
+		<td class="v-middle">
+			<span editable-text="cliente.email" e-name="email" e-form="rowform" onbeforesave="checkName($data, cliente.id)" e-required>
+			{{ cliente.correo }}
+			</span>
+		</td>
+		<td style="white-space: nowrap">
+			<form editable-form name="rowform" onbeforesave="savecliente($data, cliente.id)" ng-show="rowform.$visible" class="form-buttons form-inline" shown="inserted == cliente">
+				<button type="submit" ng-disabled="rowform.$waiting" class="btn btn-xs btn-info">
+				Guardar
+				</button>
+				<button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-xs btn-default">
+				Cancelar
+				</button>
+			</form>
+			<div class="buttons" ng-show="!rowform.$visible">
+				<button class="btn btn-xs btn-info" ng-click="rowform.$show()">Editar</button>
+				<button class="btn btn-xs btn-danger" ng-click="removeUser($index)">Eliminar</button>
+			</div>
+		</td>
+	</tr>
+  </table>
+</div>

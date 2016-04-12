@@ -1,5 +1,5 @@
 // config
-
+var uri = "http://localhost/resthotel/";
 var app =  
 angular.module('app')
   .config(
