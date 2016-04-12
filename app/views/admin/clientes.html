@@ -55,12 +55,12 @@
 			</span>
 		</td>
 		<td class="v-middle">
-			<span editable-text="cliente.email" e-name="email" e-form="rowform" onbeforesave="checkName($data, cliente.id)" e-required>
+			<span editable-text="cliente.correo" e-name="correo" e-form="rowform" onbeforesave="checkName($data, cliente.id)" e-required>
 			{{ cliente.correo }}
 			</span>
 		</td>
 		<td style="white-space: nowrap">
-			<form editable-form name="rowform" onbeforesave="savecliente($data, cliente.id)" ng-show="rowform.$visible" class="form-buttons form-inline" shown="inserted == cliente">
+			<form editable-form name="rowform" onbeforesave="saveCliente($data, cliente.id)" ng-show="rowform.$visible" class="form-buttons form-inline" shown="inserted == cliente">
 				<button type="submit" ng-disabled="rowform.$waiting" class="btn btn-xs btn-info">
 				Guardar
 				</button>

@@ -33,7 +33,6 @@ app.controller('clientesController',  function($scope,clienteService,editableOpt
 		var promiseGet = clienteService.getAll();
         promiseGet.then(function (pl) {
             $scope.Clientes = pl.data;
-            console.log(JSON.stringify($scope.Clientes));
         },
         function (errorPl) {
         	console.log('Error Al Cargar Datos', errorPl);
@@ -61,9 +60,9 @@ app.controller('clientesController',  function($scope,clienteService,editableOpt
         });
     }
 
-    $scope.savecliente = function(data, id) {
+    $scope.saveCliente = function(data, id) {
       angular.extend(data, {id: id});
-      var promisePost = clientesService.post(data);
+      var promisePost = clienteService.post(data);
       promisePost.then(function (pl) {
           alert(pl.data);
           loadClientes();
